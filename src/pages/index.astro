@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero';
+import BentoGrid from '../components/BentoGrid';
+import Albums from '../components/Albums';
+import Footer from '../components/Footer';
+import SideNav from '../components/SideNav';
+import GlowCursor from '../components/GlowCursor';
+import NothingGlyphs from '../components/NothingGlyphs';
+import keiImage from '../assets/kei.png';
+import keiImage2 from '../assets/kei2.png';
+---
+
+<Layout>
+  {/* Glyph rain sits behind everything */}
+  <NothingGlyphs client:load />
+  <GlowCursor client:load />
+  <SideNav client:load />
+  <main class="relative z-10">
+    <div id="home">
+      <Hero client:load imageSrc={keiImage.src} imageSrc2={keiImage2.src} />
+    </div>
+    <div id="overview">
+      <BentoGrid client:visible />
+    </div>
+    <div id="albums">
+      <Albums client:visible />
+    </div>
+    <div id="contact">
+      <Footer client:visible />
+    </div>
+  </main>
+</Layout>

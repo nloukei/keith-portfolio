@@ -1,0 +1,15 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import AACCUPTaskTrackerPage from '../../../components/AACCUPTaskTrackerPage';
+import aaccupImg from '../../../assets/aaccup.png';
+import aaccupImg2 from '../../../assets/aaccup2.png';
+---
+
+<Layout>
+  <AACCUPTaskTrackerPage
+    client:load
+    imageSrc={aaccupImg.src}
+    imageSrc2={aaccupImg2.src}
+  />
+</Layout>
+

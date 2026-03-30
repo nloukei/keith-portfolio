@@ -1,0 +1,17 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import NothingGlyphs from '../../components/NothingGlyphs';
+import PersonalHome from '../../components/PersonalHome';
+import Footer from '../../components/Footer';
+import keiImage from '../../assets/kei.png';
+---
+
+<Layout>
+  <NothingGlyphs client:load />
+  <main class="relative z-10">
+    <PersonalHome client:load imageSrc={keiImage.src} />
+    <div id="contact">
+      <Footer client:visible />
+    </div>
+  </main>
+</Layout>

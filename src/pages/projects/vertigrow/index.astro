@@ -1,0 +1,15 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import VertiGrowPage from '../../../components/VertiGrowPage';
+import vertiGrowImg from '../../../assets/VertiGrow.png';
+import vertiGrowImg2 from '../../../assets/VertiGrow2.png';
+---
+
+<Layout>
+  <VertiGrowPage
+    client:load
+    imageSrc={vertiGrowImg.src}
+    imageSrc2={vertiGrowImg2.src}
+  />
+</Layout>
+
