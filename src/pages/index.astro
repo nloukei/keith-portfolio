@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero';
 import BentoGrid from '../components/BentoGrid';
 import Albums from '../components/Albums';
+import WorkHistory from '../components/WorkHistory';
 import Footer from '../components/Footer';
 import SideNav from '../components/SideNav';
 import GlowCursor from '../components/GlowCursor';
@@ -25,6 +26,9 @@ import keiImage2 from '../assets/kei2.png';
     </div>
     <div id="albums">
       <Albums client:visible />
+    </div>
+    <div id="work">
+      <WorkHistory client:visible />
     </div>
     <div id="contact">
       <Footer client:visible />

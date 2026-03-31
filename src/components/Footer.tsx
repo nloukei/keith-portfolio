@@ -54,6 +54,9 @@ export default function Footer() {
         <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/20">
           © 2026 Keith Einlou Pogoy
         </p>
+        <p className="mt-3 font-mono text-[10px] tracking-[0.14em] uppercase text-white/30">
+          Built with Astro, TypeScript, React, Tailwind CSS, and Vite
+        </p>
       </div>
     </footer>
   );

@@ -461,8 +461,21 @@ export default function BentoGrid() {
           <Tile className="md:col-span-2 lg:col-span-2" delay={0}>
             <Label>About</Label>
             <p className="text-lg md:text-xl leading-relaxed text-black/70 font-light">
-             I do software development specializing in web applications as a full-stack developer.
+             I do software development specializing in web applications as a full-stack developer. 
+             I’m a DOST-SEI Scholar and a final-year IT student. I build 
+             full-stack web apps, focusing on making sure everything runs efficiently. 
+             I specialize using Laravel as my backend framework and various frontend frameworks and libraries.
             </p>
+            <div className="mt-6">
+              <a
+                href="/personal/"
+                className="inline-flex items-center gap-1.5 font-mono text-[11px] tracking-[0.18em] uppercase text-[#D71921] hover:gap-2.5 transition-all duration-200"
+                aria-label="Know more about me on personal page"
+              >
+                Know More About Me
+                <span>→</span>
+              </a>
+            </div>
           </Tile>
 
           {/* ── Education ── */}

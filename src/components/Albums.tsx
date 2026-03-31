@@ -47,7 +47,16 @@ export default function Albums() {
       </div>
 
       <div className="relative max-w-6xl mx-auto space-y-16">
-        <header>
+        <section className="relative space-y-6 md:pl-24">
+          <div className="hidden md:block absolute left-0 top-0 bottom-0 w-px bg-black/10" />
+          <span className="hidden md:block absolute left-0 top-[0.45rem] -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#D71921] shadow-[0_0_0_4px_rgba(215,25,33,0.12)]" />
+          <div className="hidden md:block absolute -left-[7.5rem] top-[-2px]">
+            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/50 whitespace-nowrap">
+              October 2024
+            </span>
+          </div>
+
+          <header>
           <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-[#D71921]">
             Albums
           </p>
@@ -63,45 +72,72 @@ export default function Albums() {
           <p className="mt-3 font-mono text-[10px] tracking-[0.22em] uppercase text-black/40">
             Credits: DevCon Bukidnon
           </p>
-        </header>
+          </header>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-5"
-        >
-          {nasaImages.map((src, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 16, scale: 0.97 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.08,
-                ease: "easeOut",
-              }}
-              whileHover={{
-                scale: 1.02,
-                translateY: -4,
-                boxShadow: "0 24px 60px rgba(0,0,0,0.24)",
-              }}
-              className="relative overflow-hidden rounded-2xl border border-white/60 bg-white/60 backdrop-blur-xl"
-            >
-              <img
-                src={src.src}
-                alt="NASA Space Apps moment"
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </motion.div>
-          ))}
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="rounded-2xl border border-white/60 bg-white/70 backdrop-blur-xl p-5 md:p-6"
+          >
+            <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#D71921] mb-3">
+              What I Learned
+            </p>
+            <p className="text-sm md:text-base leading-relaxed text-black/65">
+              My first college hackathon. Learned to adapt and cooperate with a new
+              team I did not know before. This experience was a big step in improving
+              my communication and how I handle group projects. We only placed in the
+              top 10, but the experience and the fun we had were worth more than the
+              rank. It was a solid start to my journey.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-5"
+          >
+            {nasaImages.map((src, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 16, scale: 0.97 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: false }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.08,
+                  ease: "easeOut",
+                }}
+                whileHover={{
+                  scale: 1.02,
+                  translateY: -4,
+                  boxShadow: "0 24px 60px rgba(0,0,0,0.24)",
+                }}
+                className="relative overflow-hidden rounded-2xl border border-white/60 bg-white/60 backdrop-blur-xl"
+              >
+                <img
+                  src={src.src}
+                  alt="NASA Space Apps moment"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        </section>
 
         {/* ── Scholar's Leadership Camp ── */}
-        <section className="space-y-6">
+        <section className="relative space-y-6 md:pl-24">
+          <div className="hidden md:block absolute left-0 top-0 bottom-0 w-px bg-black/10" />
+          <span className="hidden md:block absolute left-0 top-[0.45rem] -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#D71921] shadow-[0_0_0_4px_rgba(215,25,33,0.12)]" />
+          <div className="hidden md:block absolute -left-[7.5rem] top-[-2px]">
+            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/50 whitespace-nowrap">
+              November 2024
+            </span>
+          </div>
           <div className="flex items-end justify-between gap-4 flex-wrap">
             <div>
               <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-[#D71921]">
@@ -119,25 +155,12 @@ export default function Albums() {
                 Credits: Northern Mindanao Association of DOST-SEI Scholars (NMADS)
               </p>
             </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="flex items-center gap-2 rounded-full border border-black/10 bg-white/60 backdrop-blur px-4 py-2"
-            >
-              <span className="w-2 h-2 rounded-full bg-[#D71921]" />
-              <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/55">
-                2025 · Photos Collection
-              </span>
-            </motion.div>
           </div>
 
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: false, margin: "-80px" }}
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
           >
@@ -148,7 +171,7 @@ export default function Albums() {
                   key={i}
                   initial={{ opacity: 0, y: 16, scale: 0.98 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   transition={{ duration: 0.55, delay: i * 0.06, ease: "easeOut" }}
                   whileHover={{
                     scale: 1.02,
@@ -202,7 +225,7 @@ export default function Albums() {
                 key={album.title}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
                 className="relative rounded-2xl border border-white/60 bg-white/70 backdrop-blur-xl p-5 flex flex-col justify-between"
               >

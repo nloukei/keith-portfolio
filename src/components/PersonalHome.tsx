@@ -14,10 +14,11 @@ const chips = ["Coffee", "Long walks", "Indie games", "Hackathons", "Good typogr
 
 interface PersonalHomeProps {
   imageSrc: string;
+  videoSrc?: string;
 }
 
 /** Casual “personal” landing — Nothing-style: mono labels, red dot, glass panels. */
-export default function PersonalHome({ imageSrc }: PersonalHomeProps) {
+export default function PersonalHome({ imageSrc, videoSrc }: PersonalHomeProps) {
   return (
     <div className="relative min-h-[calc(100vh-7rem)] px-4 pb-16 md:px-8">
       <motion.section
@@ -45,10 +46,10 @@ export default function PersonalHome({ imageSrc }: PersonalHomeProps) {
           </div>
           <div className="flex-1 space-y-4">
             <h1 className="text-2xl font-semibold tracking-tight text-black md:text-3xl">
-              Hey — I&apos;m Keith
+              Hey again, I&apos;m Keith
             </h1>
             <p className="text-base leading-relaxed text-black/60 md:text-lg">
-              This side of the site is lighter on résumé bullets and heavier on the human stuff: what I
+              This side of the site is lighter on resume bullets and heavier on the human stuff: what I
               enjoy, how I recharge, and the little things that keep me curious. The professional mode
               is still one tap away.
             </p>
@@ -75,8 +76,42 @@ export default function PersonalHome({ imageSrc }: PersonalHomeProps) {
               <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#D71921]" />
               Anything that mixes hardware curiosity with a clean UI.
             </li>
+            <li className="flex gap-3">
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#D71921]" />
+              Watching YouTube tech reviews on the latest phones, laptops, gaming PCs, PC builds, and peripherals - I find it fascinating.
+            </li>
           </ul>
         </motion.div>
+
+        {videoSrc && (
+          <motion.div
+            variants={fadeUp}
+            className="rounded-2xl border border-black/[0.08] bg-white/70 backdrop-blur-xl overflow-hidden"
+          >
+            <div className="p-6 md:p-8 pb-0 md:pb-0">
+              <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.25em] text-[#D71921]">
+                Favorite Game
+              </p>
+              <h3 className="text-lg font-semibold tracking-tight text-black">
+                Marvel Rivals
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-black/55">
+                  What I'm playing right now to clear my head. A bit of gaming helps with the stress and keeps my mood balanced between problems.
+              </p>
+            </div>
+            <div className="mt-4">
+              <video
+                src={videoSrc}
+                className="w-full aspect-video object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              />
+            </div>
+          </motion.div>
+        )}
 
         <motion.div variants={fadeUp} id="interests" className="space-y-4">
           <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-black/35">
