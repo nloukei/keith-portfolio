@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -43,6 +43,101 @@ const members = [
   { name: "Keith Einlou Pogoy", github: "https://github.com/nloukei" },
   { name: "James Joshua Yosores", github: "https://github.com/Yosores04" },
   { name: "Sern Ponce", github: "https://github.com/Ponceeee" },
+];
+
+const sensorIconSvg = "w-[18px] h-[18px] text-black/55 shrink-0";
+
+/** Inline SVGs for VertiGrow IoT sensors — shown under the IoT bullet. */
+const iotSensors: { name: string; icon: ReactNode }[] = [
+  {
+    name: "Soil moisture",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className={sensorIconSvg} aria-hidden>
+        <path
+          d="M12 3c-3 4.5-6 7.8-6 11a6 6 0 0 0 12 0c0-3.2-3-6.5-6-11Z"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinejoin="round"
+        />
+        <path d="M12 14v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    ),
+  },
+  {
+    name: "Temperature",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className={sensorIconSvg} aria-hidden>
+        <path
+          d="M10 10.5V5a2 2 0 1 1 4 0v5.5a4 4 0 1 1-4 0Z"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinejoin="round"
+        />
+        <path d="M12 14v3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    ),
+  },
+  {
+    name: "Humidity",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className={sensorIconSvg} aria-hidden>
+        <path
+          d="M8 14c0-2 2.5-5 4-7 1.5 2 4 5 4 7a4 4 0 1 1-8 0Z"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ),
+  },
+  {
+    name: "Light",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className={sensorIconSvg} aria-hidden>
+        <circle cx="12" cy="12" r="3.5" stroke="currentColor" strokeWidth="1.5" />
+        <path
+          d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+      </svg>
+    ),
+  },
+  {
+    name: "pH",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className={sensorIconSvg} aria-hidden>
+        <path
+          d="M9 3h6l-1 14a3 3 0 0 1-4 0L9 3Z"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinejoin="round"
+        />
+        <path d="M8 21h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    ),
+  },
+  {
+    name: "Water level",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className={sensorIconSvg} aria-hidden>
+        <rect x="5" y="4" width="14" height="16" rx="2" stroke="currentColor" strokeWidth="1.5" />
+        <path
+          d="M5 14c2.5 1 4.5 1 7 0s4.5-1 7 0"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+        <path
+          d="M5 17c2.5 1 4.5 1 7 0s4.5-1 7 0"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+      </svg>
+    ),
+  },
 ];
 
 const fadeUp = {
@@ -120,20 +215,20 @@ function Lightbox({
           onClick={onClose}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.96 }}
-          className="rounded-full bg-white/10 backdrop-blur px-4 py-2 border border-white/15 text-white/90 font-mono text-[11px] tracking-[0.15em] hover:border-[#D71921]/50 transition-colors"
+          className="rounded-full bg-zinc-900/92 backdrop-blur-md px-4 py-2 border border-white/20 text-white font-mono text-[11px] tracking-[0.15em] shadow-[0_4px_24px_rgba(0,0,0,0.45)] hover:border-[#D71921]/55 hover:bg-zinc-900 transition-colors"
         >
           Close ✕
         </motion.button>
       </div>
 
       {/* Prev / Next */}
-      <div className="absolute left-4 right-4 bottom-4 flex justify-between">
+      <div className="absolute left-4 right-4 bottom-4 flex justify-between pointer-events-none">
         <motion.button
           type="button"
           onClick={(e) => { e.stopPropagation(); prev(); }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.96 }}
-          className="rounded-full bg-white/10 backdrop-blur px-4 py-2 border border-white/15 text-white/90 font-mono text-[11px] tracking-[0.15em] hover:border-[#D71921]/50 transition-colors"
+          className="pointer-events-auto rounded-full bg-zinc-900/92 backdrop-blur-md px-4 py-2 border border-white/20 text-white font-mono text-[11px] tracking-[0.15em] shadow-[0_4px_24px_rgba(0,0,0,0.45)] hover:border-[#D71921]/55 hover:bg-zinc-900 transition-colors"
         >
           ← Prev
         </motion.button>
@@ -142,7 +237,7 @@ function Lightbox({
           onClick={(e) => { e.stopPropagation(); next(); }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.96 }}
-          className="rounded-full bg-white/10 backdrop-blur px-4 py-2 border border-white/15 text-white/90 font-mono text-[11px] tracking-[0.15em] hover:border-[#D71921]/50 transition-colors"
+          className="pointer-events-auto rounded-full bg-zinc-900/92 backdrop-blur-md px-4 py-2 border border-white/20 text-white font-mono text-[11px] tracking-[0.15em] shadow-[0_4px_24px_rgba(0,0,0,0.45)] hover:border-[#D71921]/55 hover:bg-zinc-900 transition-colors"
         >
           Next →
         </motion.button>
@@ -225,6 +320,127 @@ export default function VertiGrowPage({ imageSrc, imageSrc2 }: Props) {
             </svg>
             View on GitHub ↗
           </motion.a>
+        </motion.section>
+
+        {/* ── Problem ── */}
+        <motion.section variants={fadeUp} className="space-y-5">
+          <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-[#D71921]">
+            The Problem
+          </p>
+          <div className="rounded-2xl border border-black/[0.08] bg-white/70 backdrop-blur-xl p-6 md:p-8 space-y-4">
+            <p className="text-black/70 leading-relaxed">
+              Vertical farming is a promising solution for urban food production, but its
+              sustainability is hampered by three critical challenges:
+            </p>
+            <ul className="space-y-4">
+              {[
+                {
+                  title: "Imprecise manual monitoring",
+                  body: "Manual monitoring of plant conditions fails to accurately estimate water requirements for crops — including where water is needed and how much — leading to suboptimal plant growth and wasted resources.",
+                },
+                {
+                  title: "High energy consumption",
+                  body: "Vertical farming consumes around 38.8 kWh per kg of produce — significantly higher than traditional greenhouses at 5.4 kWh/kg. The energy cost is driven primarily by climate control systems, specialized LED lighting, environmental sensors, and automated irrigation.",
+                },
+                {
+                  title: "Large carbon footprint",
+                  body: "When powered by non-renewable energy, the high energy demands of vertical farming result in substantial carbon emissions, undermining its environmental promise as a sustainable agricultural practice.",
+                },
+              ].map(({ title, body }) => (
+                <li key={title} className="flex items-start gap-4">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D71921] mt-2 shrink-0" />
+                  <div>
+                    <p className="font-mono text-[11px] tracking-[0.15em] uppercase text-black/50 mb-1">
+                      {title}
+                    </p>
+                    <p className="text-sm text-black/65 leading-relaxed">{body}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </motion.section>
+
+        {/* ── Solution ── */}
+        <motion.section variants={fadeUp} className="space-y-5">
+          <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-[#D71921]">
+            The Solution
+          </p>
+          <div className="rounded-2xl border border-black/[0.08] bg-white/70 backdrop-blur-xl p-6 md:p-8 space-y-4">
+            <p className="text-black/70 leading-relaxed">
+              VertiGrow addresses these challenges by combining IoT-based automation,
+              intelligent algorithms, and renewable solar energy into a single integrated system:
+            </p>
+            <ul className="space-y-4">
+              {(
+                [
+                  {
+                    title: "IoT sensor network",
+                    body: "A network of sensors managed by an ESP32 microcontroller provides continuous, accurate real-time data on plant conditions.",
+                    sensors: iotSensors,
+                  },
+                  {
+                    title: "Fuzzy Logic irrigation control",
+                    body: "A Fuzzy Logic algorithm handles adaptive irrigation decisions using approximate reasoning to handle the variability and uncertainty in agricultural environments. In testing, it achieved 84.53% irrigation accuracy.",
+                  },
+                  {
+                    title: "LEACH protocol for energy efficiency",
+                    body: "An adapted Low-Energy Adaptive Clustering Hierarchy (LEACH) protocol organizes sensor nodes into clusters for efficient data transmission, reducing energy consumption by 24.4% and enabling fully solar-powered operation without grid dependence.",
+                  },
+                  {
+                    title: "Solar-powered operation",
+                    body: "The entire system runs on solar energy, eliminating carbon emissions from grid electricity and ensuring reliable, continuous production cycles, and validated over seven days of real-world testing.",
+                  },
+                ] as const
+              ).map((item) => (
+                <li key={item.title} className="flex items-start gap-4">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D71921] mt-2 shrink-0" />
+                  <div className="min-w-0 flex-1">
+                    <p className="font-mono text-[11px] tracking-[0.15em] uppercase text-black/50 mb-1">
+                      {item.title}
+                    </p>
+                    <p className="text-sm text-black/65 leading-relaxed">{item.body}</p>
+                    {"sensors" in item && item.sensors && (
+                      <div
+                        className="mt-4 flex flex-wrap items-start justify-start gap-x-5 gap-y-4"
+                        role="list"
+                        aria-label="IoT sensors"
+                      >
+                        {item.sensors.map(({ name, icon }) => (
+                          <div
+                            key={name}
+                            role="listitem"
+                            className="flex flex-col items-center gap-1.5 w-[4.75rem]"
+                          >
+                            <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-black/[0.08] bg-black/[0.03]">
+                              {icon}
+                            </div>
+                            <span className="text-center font-mono text-[8px] uppercase tracking-[0.12em] text-black/45 leading-tight">
+                              {name}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-2 pt-5 border-t border-black/[0.06] grid sm:grid-cols-3 gap-4">
+              {[
+                { stat: "84.53%", label: "Fuzzy Logic irrigation accuracy" },
+                { stat: "24.4%", label: "Energy reduction via LEACH" },
+                { stat: "120", label: "User evaluation participants" },
+              ].map(({ stat, label }) => (
+                <div key={label} className="text-center">
+                  <p className="text-2xl font-bold text-black">{stat}</p>
+                  <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-black/40 mt-1">
+                    {label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
         </motion.section>
 
         {/* ── Image Preview ── */}

@@ -3,6 +3,7 @@ import Layout from '../../../layouts/Layout.astro';
 import VertiGrowPage from '../../../components/VertiGrowPage';
 import vertiGrowImg from '../../../assets/VertiGrow.png';
 import vertiGrowImg2 from '../../../assets/VertiGrow2.png';
+import Footer from '../../../components/Footer';
 ---
 
 <Layout>
@@ -11,5 +12,6 @@ import vertiGrowImg2 from '../../../assets/VertiGrow2.png';
     imageSrc={vertiGrowImg.src}
     imageSrc2={vertiGrowImg2.src}
   />
+  <Footer client:load />
 </Layout>
 

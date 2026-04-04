@@ -119,13 +119,13 @@ function Lightbox({
             }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.96 }}
-            className="rounded-full bg-white/10 backdrop-blur px-4 py-2 border border-white/15 text-white/90 font-mono text-[11px] tracking-[0.15em] hover:border-[#D71921]/50 transition-colors"
+            className="rounded-full bg-zinc-900/92 backdrop-blur-md px-4 py-2 border border-white/20 text-white font-mono text-[11px] tracking-[0.15em] shadow-[0_4px_24px_rgba(0,0,0,0.45)] hover:border-[#D71921]/55 hover:bg-zinc-900 transition-colors"
           >
             Close ✕
           </motion.button>
         </div>
 
-        <div className="absolute left-4 right-4 bottom-4 flex justify-between">
+        <div className="absolute left-4 right-4 bottom-4 flex justify-between pointer-events-none">
           <motion.button
             type="button"
             onClick={(e) => {
@@ -135,7 +135,7 @@ function Lightbox({
             }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.96 }}
-            className="rounded-full bg-white/10 backdrop-blur px-4 py-2 border border-white/15 text-white/90 font-mono text-[11px] tracking-[0.15em] hover:border-[#D71921]/50 transition-colors"
+            className="pointer-events-auto rounded-full bg-zinc-900/92 backdrop-blur-md px-4 py-2 border border-white/20 text-white font-mono text-[11px] tracking-[0.15em] shadow-[0_4px_24px_rgba(0,0,0,0.45)] hover:border-[#D71921]/55 hover:bg-zinc-900 transition-colors"
           >
             ← Prev
           </motion.button>
@@ -148,7 +148,7 @@ function Lightbox({
             }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.96 }}
-            className="rounded-full bg-white/10 backdrop-blur px-4 py-2 border border-white/15 text-white/90 font-mono text-[11px] tracking-[0.15em] hover:border-[#D71921]/50 transition-colors"
+            className="pointer-events-auto rounded-full bg-zinc-900/92 backdrop-blur-md px-4 py-2 border border-white/20 text-white font-mono text-[11px] tracking-[0.15em] shadow-[0_4px_24px_rgba(0,0,0,0.45)] hover:border-[#D71921]/55 hover:bg-zinc-900 transition-colors"
           >
             Next →
           </motion.button>

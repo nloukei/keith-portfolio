@@ -9,25 +9,27 @@ import slc2 from "../assets/slc/SLC2.jpg";
 import slc3 from "../assets/slc/SLC3.jpg";
 import slc4 from "../assets/slc/SLC4.jpg";
 import slc5 from "../assets/slc/SLC5.jpg";
+import asean1 from "../assets/asean1.jpg";
+import asean2 from "../assets/asean2.png";
+import asean3 from "../assets/asean3.png";
+import asean4 from "../assets/asean4.png";
+import hack4gov1 from "../assets/hack4gov1.jpg";
+import hack4gov2 from "../assets/hack4gov2.jpg";
+import hack4gov3 from "../assets/hack4gov3.jpg";
+import hack4gov4 from "../assets/hack4gov4.jpg";
 
 const nasaImages = [nasa1, nasa2, nasa3, nasa4];
 
 const slcImages = [slc1, slc2, slc3, slc4, slc5];
 
+const aseanImages = [asean1, asean2, asean3, asean4];
+
+const hack4govImages = [hack4gov1, hack4gov2, hack4gov3, hack4gov4];
+
 const otherAlbums = [
-  {
-    title: "ASEAN Green Entrepreneurship Hackathon",
-    subtitle: "Regional Finalist · 2025",
-    status: "Photos coming soon",
-  },
   {
     title: "Philippine Startup Challenge",
     subtitle: "National Pitching · 2025",
-    status: "Photos coming soon",
-  },
-  {
-    title: "Hack4Gov",
-    subtitle: "DICT Region X · 2025",
     status: "Photos coming soon",
   },
 ];
@@ -158,6 +160,28 @@ export default function Albums() {
           </div>
 
           <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="rounded-2xl border border-white/60 bg-white/70 backdrop-blur-xl p-5 md:p-6"
+          >
+            <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#D71921] mb-3">
+              What I Learned
+            </p>
+            <p className="text-sm md:text-base leading-relaxed text-black/65">
+              Through the DOST-SEI Scholar's Leadership Camp, I discovered that leadership is not about
+              individual perfection, but about the courage to step forward. I learned that an
+              effective leader doesn&apos;t need to master every skill, but must excel in fostering
+              open communication to ensure the team&apos;s synergy and well-being. This experience
+              also taught me the value of professional transience, understanding that while team
+              members may come and go, the bonds formed through shared challenges are what truly
+              drive a project&apos;s success. We weren&apos;t defined by being &apos;the best,&apos; but by the
+              memorable journey of friendship and collective effort that we shared.
+            </p>
+          </motion.div>
+
+          <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-80px" }}
@@ -203,6 +227,154 @@ export default function Albums() {
                   </div>
 
                   {/* Index label */}
+                  <div className="absolute top-4 left-4 flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[#D71921]" />
+                    <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/60">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </section>
+
+        {/* ── ASEAN Green Entrepreneurship Hackathon ── */}
+        <section className="relative space-y-6 md:pl-24">
+          <div className="hidden md:block absolute left-0 top-0 bottom-0 w-px bg-black/10" />
+          <span className="hidden md:block absolute left-0 top-[0.45rem] -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#D71921] shadow-[0_0_0_4px_rgba(215,25,33,0.12)]" />
+          <div className="hidden md:block absolute -left-[7.5rem] top-[-2px]">
+            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/50 whitespace-nowrap">
+              July 2025
+            </span>
+          </div>
+
+          <div>
+            <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-[#D71921]">
+              Album
+            </p>
+            <h2 className="mt-3 text-2xl md:text-3xl font-semibold tracking-tight text-black">
+              ASEAN Green Entrepreneurship Hackathon
+            </h2>
+            <p className="mt-2 text-sm text-black/60 max-w-xl">
+              Regional Finalist representing BukSU Team 3. We pitched EcoQuest,
+              a mobile app combining gamification, AR tree identification, and
+              GPS-enabled recycling tracking to engage Filipino youth in
+              environmental action.
+            </p>
+            <p className="mt-3 font-mono text-[10px] tracking-[0.22em] uppercase text-black/40">
+              Passage to ASEAN (P2A) · BukSU Team 3
+            </p>
+          </div>
+
+          {/* EcoQuest project card */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="rounded-2xl border border-white/60 bg-white/70 backdrop-blur-xl p-5 md:p-6"
+          >
+            <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#D71921] mb-3">
+              The Project — EcoQuest
+            </p>
+            <p className="text-sm md:text-base leading-relaxed text-black/65 mb-4">
+              EcoQuest is a mobile app that makes environmental action as fun as playing your
+              favorite game. It integrates AR tree identification, eco mini-games, GPS-tracked
+              recycling stations, and an EcoPoints reward system where points convert to
+              real vouchers and brand rewards. Sustained by corporate CSR partnerships, a
+              freemium model, and a recyclables marketplace.
+            </p>
+            
+          </motion.div>
+
+          {/* Photo grid */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="grid grid-cols-1 sm:grid-cols-2 gap-5"
+          >
+            {aseanImages.map((src, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 16, scale: 0.97 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: false }}
+                transition={{ duration: 0.55, delay: i * 0.07, ease: "easeOut" }}
+                whileHover={{ scale: 1.02, translateY: -4, boxShadow: "0 24px 60px rgba(0,0,0,0.24)" }}
+                className="relative overflow-hidden rounded-2xl border border-white/60 bg-white/60 backdrop-blur-xl"
+              >
+                <img
+                  src={src.src}
+                  alt={`ASEAN Green Entrepreneurship Hackathon — EcoQuest ${i + 1}`}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute top-4 left-4 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#D71921]" />
+                  <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/60">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </section>
+
+        {/* ── Hack4Gov ── */}
+        <section className="relative space-y-6 md:pl-24">
+          <div className="hidden md:block absolute left-0 top-0 bottom-0 w-px bg-black/10" />
+          <span className="hidden md:block absolute left-0 top-[0.45rem] -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#D71921] shadow-[0_0_0_4px_rgba(215,25,33,0.12)]" />
+          <div className="hidden md:block absolute -left-[7.5rem] top-[-2px]">
+            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/50 whitespace-nowrap">
+              November 2025
+            </span>
+          </div>
+
+          <div>
+            <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-[#D71921]">
+              Album
+            </p>
+            <h2 className="mt-3 text-2xl md:text-3xl font-semibold tracking-tight text-black">
+              Regional Hack4Gov
+            </h2>
+            <p className="mt-2 text-sm text-black/60 max-w-xl">
+              Competed in the DICT Region X Hack4Gov hackathon, a government-focused
+              competition challenging teams to build tech solutions for public service.
+              Certificates, team moments, and the energy of a room full of builders.
+            </p>
+            <p className="mt-3 font-mono text-[10px] tracking-[0.22em] uppercase text-black/40">
+              DICT Region X · 2025
+            </p>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="grid grid-cols-1 sm:grid-cols-2 gap-5"
+          >
+            {hack4govImages.map((src, i) => {
+              const spans = i === 3 ? "sm:col-span-2" : "";
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 16, scale: 0.97 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: false }}
+                  transition={{ duration: 0.55, delay: i * 0.07, ease: "easeOut" }}
+                  whileHover={{ scale: 1.02, translateY: -4, boxShadow: "0 24px 60px rgba(0,0,0,0.24)" }}
+                  className={`relative overflow-hidden rounded-2xl border border-white/60 bg-white/60 backdrop-blur-xl ${spans}`}
+                >
+                  <img
+                    src={src.src}
+                    alt={`Hack4Gov Region X photo ${i + 1}`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
                   <div className="absolute top-4 left-4 flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-[#D71921]" />
                     <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/60">

@@ -10,7 +10,7 @@ const stagger = {
   hidden: {},
 };
 
-const chips = ["Coffee", "Long walks", "Indie games", "Hackathons", "Good typography"];
+const chips = ["Coffee", "Long walks", "Indie games","Competetive FPS games", "Hackathons"];
 
 interface PersonalHomeProps {
   imageSrc: string;
