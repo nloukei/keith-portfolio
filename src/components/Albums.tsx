@@ -36,7 +36,7 @@ const otherAlbums = [
 
 export default function Albums() {
   return (
-    <section className="relative py-24 md:py-32 px-4 md:px-6">
+    <section className="relative py-16 md:py-32 px-4 md:px-6">
       <div className="absolute inset-0 pointer-events-none">
         <div
           className="w-full h-full"
@@ -56,6 +56,12 @@ export default function Albums() {
             <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/50 whitespace-nowrap">
               October 2024
             </span>
+          </div>
+
+          {/* Mobile date pill */}
+          <div className="flex md:hidden items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#D71921]" />
+            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/45">October 2024</span>
           </div>
 
           <header>
@@ -140,6 +146,13 @@ export default function Albums() {
               November 2024
             </span>
           </div>
+
+          {/* Mobile date pill */}
+          <div className="flex md:hidden items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#D71921]" />
+            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/45">November 2024</span>
+          </div>
+
           <div className="flex items-end justify-between gap-4 flex-wrap">
             <div>
               <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-[#D71921]">
@@ -249,6 +262,12 @@ export default function Albums() {
             </span>
           </div>
 
+          {/* Mobile date pill */}
+          <div className="flex md:hidden items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#D71921]" />
+            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/45">July 2025</span>
+          </div>
+
           <div>
             <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-[#D71921]">
               Album
@@ -333,6 +352,12 @@ export default function Albums() {
             </span>
           </div>
 
+          {/* Mobile date pill */}
+          <div className="flex md:hidden items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#D71921]" />
+            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/45">November 2025</span>
+          </div>
+
           <div>
             <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-[#D71921]">
               Album
@@ -341,9 +366,9 @@ export default function Albums() {
               Regional Hack4Gov
             </h2>
             <p className="mt-2 text-sm text-black/60 max-w-xl">
-              Competed in the DICT Region X Hack4Gov hackathon, a government-focused
-              competition challenging teams to build tech solutions for public service.
-              Certificates, team moments, and the energy of a room full of builders.
+            Joined the Hack4Gov hackathon in Region X. 
+            We competed in a PicoCTF-style format, racing to earn the highest points by solving technical challenges. 
+            It was a great way to test our skills while focusing on how tech can better serve the public.
             </p>
             <p className="mt-3 font-mono text-[10px] tracking-[0.22em] uppercase text-black/40">
               DICT Region X · 2025
@@ -357,33 +382,30 @@ export default function Albums() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="grid grid-cols-1 sm:grid-cols-2 gap-5"
           >
-            {hack4govImages.map((src, i) => {
-              const spans = i === 3 ? "sm:col-span-2" : "";
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 16, scale: 0.97 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: false }}
-                  transition={{ duration: 0.55, delay: i * 0.07, ease: "easeOut" }}
-                  whileHover={{ scale: 1.02, translateY: -4, boxShadow: "0 24px 60px rgba(0,0,0,0.24)" }}
-                  className={`relative overflow-hidden rounded-2xl border border-white/60 bg-white/60 backdrop-blur-xl ${spans}`}
-                >
-                  <img
-                    src={src.src}
-                    alt={`Hack4Gov Region X photo ${i + 1}`}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                  <div className="absolute top-4 left-4 flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-[#D71921]" />
-                    <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/60">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                  </div>
-                </motion.div>
-              );
-            })}
+            {hack4govImages.map((src, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 16, scale: 0.97 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: false }}
+                transition={{ duration: 0.55, delay: i * 0.07, ease: "easeOut" }}
+                whileHover={{ scale: 1.02, translateY: -4, boxShadow: "0 24px 60px rgba(0,0,0,0.24)" }}
+                className="relative overflow-hidden rounded-2xl border border-white/60 bg-white/60 backdrop-blur-xl"
+              >
+                <img
+                  src={src.src}
+                  alt={`Hack4Gov Region X photo ${i + 1}`}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute top-4 left-4 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#D71921]" />
+                  <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/60">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
         </section>
 

@@ -124,7 +124,7 @@ export default function Hero({ imageSrc, imageSrc2 }: HeroProps) {
         variants={stagger}
         initial="hidden"
         animate="visible"
-        className="relative z-10 mt-6 flex flex-col items-start gap-4 md:mt-0 md:w-[520px]"
+        className="relative z-10 mt-6 flex w-full flex-col items-start gap-4 px-5 md:mt-0 md:w-[520px] md:px-0"
       >
         {/* Name */}
         <motion.div variants={fadeUp} className="w-full">
@@ -212,7 +212,7 @@ export default function Hero({ imageSrc, imageSrc2 }: HeroProps) {
         </motion.div>
 
         {/* Social links */}
-        <motion.div variants={fadeUp} className="flex items-center gap-3">
+        <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-2">
           {socials.map((s) => (
             <motion.a
               key={s.label}
@@ -234,7 +234,7 @@ export default function Hero({ imageSrc, imageSrc2 }: HeroProps) {
         </motion.div>
 
         {/* CTA */}
-        <motion.div variants={fadeUp} className="flex items-center gap-3 mt-0">
+        <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-3 mt-0">
           <motion.a
             href="#overview"
             whileHover={{ y: -2, boxShadow: "0 16px 40px rgba(215,25,33,0.20)" }}

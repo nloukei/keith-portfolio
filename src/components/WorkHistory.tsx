@@ -23,7 +23,7 @@ const roles = [
 
 export default function WorkHistory() {
   return (
-    <section className="relative py-24 md:py-32 px-4 md:px-6">
+    <section className="relative py-16 md:py-32 px-4 md:px-6">
       {/* Dot grid */}
       <div
         className="absolute inset-0 pointer-events-none"

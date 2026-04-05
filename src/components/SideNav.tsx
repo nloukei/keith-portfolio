@@ -9,27 +9,45 @@ const navItems = [
   { label: "Contact", href: "#contact" },
 ];
 
+function getActiveSectionId(): string {
+  // Reference line: fraction down the viewport. Last section whose top is at or
+  // above this line wins. Works for very tall blocks (#albums) where
+  // IntersectionObserver + threshold never fires (visible area / total height < 30%).
+  const y = window.scrollY + window.innerHeight * 0.35;
+  let current = navItems[0].href.slice(1);
+  for (const { href } of navItems) {
+    const el = document.querySelector(href);
+    if (!el) continue;
+    const top = el.getBoundingClientRect().top + window.scrollY;
+    if (top <= y) current = href.slice(1);
+  }
+  return current;
+}
+
 export default function SideNav() {
   const [active, setActive] = useState("home");
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActive(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.3 },
-    );
+    let ticking = false;
+    const update = () => {
+      setActive(getActiveSectionId());
+      ticking = false;
+    };
+    const onScrollOrResize = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
 
-    navItems.forEach(({ href }) => {
-      const el = document.querySelector(href);
-      if (el) observer.observe(el);
-    });
+    update();
+    window.addEventListener("scroll", onScrollOrResize, { passive: true });
+    window.addEventListener("resize", onScrollOrResize, { passive: true });
 
-    return () => observer.disconnect();
+    return () => {
+      window.removeEventListener("scroll", onScrollOrResize);
+      window.removeEventListener("resize", onScrollOrResize);
+    };
   }, []);
 
   return (

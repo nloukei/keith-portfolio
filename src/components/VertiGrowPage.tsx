@@ -336,11 +336,11 @@ export default function VertiGrowPage({ imageSrc, imageSrc2 }: Props) {
               {[
                 {
                   title: "Imprecise manual monitoring",
-                  body: "Manual monitoring of plant conditions fails to accurately estimate water requirements for crops — including where water is needed and how much — leading to suboptimal plant growth and wasted resources.",
+                  body: "Manual monitoring of plant conditions fails to accurately estimate water requirements for crops, including where water is needed and how much",
                 },
                 {
                   title: "High energy consumption",
-                  body: "Vertical farming consumes around 38.8 kWh per kg of produce — significantly higher than traditional greenhouses at 5.4 kWh/kg. The energy cost is driven primarily by climate control systems, specialized LED lighting, environmental sensors, and automated irrigation.",
+                  body: "Vertical farming requires a lot more energy than traditional greenhouses. Most of that cost comes from keeping the climate controlled, running the specialized LED lights, and managing all the sensors and automated systems needed to keep the plants growing.",
                 },
                 {
                   title: "Large carbon footprint",
@@ -376,20 +376,20 @@ export default function VertiGrowPage({ imageSrc, imageSrc2 }: Props) {
                 [
                   {
                     title: "IoT sensor network",
-                    body: "A network of sensors managed by an ESP32 microcontroller provides continuous, accurate real-time data on plant conditions.",
+                    body: "A network of sensors managed by an ESP32 microcontroller provides continuous and accurate real-time data on plant conditions.",
                     sensors: iotSensors,
                   },
                   {
                     title: "Fuzzy Logic irrigation control",
-                    body: "A Fuzzy Logic algorithm handles adaptive irrigation decisions using approximate reasoning to handle the variability and uncertainty in agricultural environments. In testing, it achieved 84.53% irrigation accuracy.",
+                    body: "A Fuzzy Logic algorithm handles adaptive irrigation decisions using approximate reasoning to handle the variability and uncertainty in agricultural environments.",
                   },
                   {
                     title: "LEACH protocol for energy efficiency",
-                    body: "An adapted Low-Energy Adaptive Clustering Hierarchy (LEACH) protocol organizes sensor nodes into clusters for efficient data transmission, reducing energy consumption by 24.4% and enabling fully solar-powered operation without grid dependence.",
+                    body: "An adapted Low-Energy Adaptive Clustering Hierarchy (LEACH) protocol organizes sensor nodes into clusters for efficient data transmission, reducing energy consumption and enabling fully solar-powered operation.",
                   },
                   {
                     title: "Solar-powered operation",
-                    body: "The entire system runs on solar energy, eliminating carbon emissions from grid electricity and ensuring reliable, continuous production cycles, and validated over seven days of real-world testing.",
+                    body: "The entire system runs on solar energy, eliminating carbon emissions from grid electricity and ensuring reliable and continuous production cycles.",
                   },
                 ] as const
               ).map((item) => (
@@ -426,20 +426,7 @@ export default function VertiGrowPage({ imageSrc, imageSrc2 }: Props) {
                 </li>
               ))}
             </ul>
-            <div className="mt-2 pt-5 border-t border-black/[0.06] grid sm:grid-cols-3 gap-4">
-              {[
-                { stat: "84.53%", label: "Fuzzy Logic irrigation accuracy" },
-                { stat: "24.4%", label: "Energy reduction via LEACH" },
-                { stat: "120", label: "User evaluation participants" },
-              ].map(({ stat, label }) => (
-                <div key={label} className="text-center">
-                  <p className="text-2xl font-bold text-black">{stat}</p>
-                  <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-black/40 mt-1">
-                    {label}
-                  </p>
-                </div>
-              ))}
-            </div>
+            
           </div>
         </motion.section>
 

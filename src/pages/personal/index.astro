@@ -5,12 +5,13 @@ import PersonalHome from '../../components/PersonalHome';
 import Footer from '../../components/Footer';
 import keiImage from '../../assets/kei.png';
 import marvelRivalsVideo from '../../assets/video/marvelrivals.mp4';
+import valorantVideo from '../../assets/video/valorant.mp4';
 ---
 
 <Layout>
   <NothingGlyphs client:load />
   <main class="relative z-10">
-    <PersonalHome client:load imageSrc={keiImage.src} videoSrc={marvelRivalsVideo} />
+    <PersonalHome client:load imageSrc={keiImage.src} videoSrc={marvelRivalsVideo} valorantVideoSrc={valorantVideo} />
     <div id="contact">
       <Footer client:visible />
     </div>
