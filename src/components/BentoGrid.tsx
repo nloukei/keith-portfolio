@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+﻿import { useEffect, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -87,7 +87,7 @@ function VertiGrowPreview({
           />
         </AnimatePresence>
 
-        {/* Dot grain overlay (keeps it consistent with your Nothing theme) */}
+        
         <div
           className="absolute inset-0 opacity-40 z-0"
           style={{
@@ -354,111 +354,102 @@ const certifications = [
   "Consistent Recipient of Academic Honors",
 ];
 
+// Tile rotations: deterministic so they don't shift on re-render
+const TILE_ROTATIONS = [-0.9, 0.7, -0.5, 1.1, -0.8, 0.6, -1.2, 0.4, -0.6, 1.0, -0.7, 0.9];
+
 function Tile({
   children,
   className = "",
   delay = 0,
+  tileIndex = 0,
 }: {
   children: ReactNode;
   className?: string;
   delay?: number;
+  tileIndex?: number;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [spot, setSpot] = useState({ x: 50, y: 50 });
-  const [hovered, setHovered] = useState(false);
-
-  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    setSpot({
-      x: ((e.clientX - rect.left) / rect.width) * 100,
-      y: ((e.clientY - rect.top) / rect.height) * 100,
-    });
-  };
+  const rotateDeg = TILE_ROTATIONS[tileIndex % TILE_ROTATIONS.length];
 
   return (
     <motion.div
-      ref={ref}
       initial={{ opacity: 0, y: 28, scale: 0.94 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-48px 0px -48px 0px", amount: 0.15 }}
       transition={{ type: "spring", stiffness: 380, damping: 28, mass: 0.8, delay }}
-      whileHover={{ y: -3, transition: { duration: 0.2, ease: "easeOut" } }}
-      onMouseMove={onMouseMove}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className={`group relative rounded-2xl p-px h-full ${className}`}
+      whileHover={{ y: -4, rotate: 0, transition: { duration: 0.2, ease: "easeOut" } }}
+      className={`group relative h-full ${className}`}
+      style={{ rotate: `${rotateDeg}deg` }}
     >
-      {/* Outer border — faint normally, red glow on hover */}
-      <div className="pointer-events-none absolute inset-0 rounded-2xl border border-black/[0.08] group-hover:border-[#D71921]/30 transition-colors duration-300" />
-
-      {/* Glassmorphism content layer */}
-      <div className="relative h-full rounded-[15px] border border-black/[0.08] bg-white/70 backdrop-blur-xl p-6 md:p-8 transition-all duration-300 group-hover:border-[#D71921]/20 group-hover:shadow-[0_8px_32px_rgba(215,25,33,0.07)] overflow-hidden">
-
-        {/* Red spotlight trailing the cursor */}
-        <div
-          className="absolute inset-0 rounded-[15px] pointer-events-none transition-opacity duration-300"
-          style={{
-            opacity: hovered ? 1 : 0,
-            background: `radial-gradient(240px circle at ${spot.x}% ${spot.y}%, rgba(215,25,33,0.07), transparent 65%)`,
-          }}
-        />
-
+      {/* Paper card with hand-drawn border */}
+      <div
+        className="relative h-full p-6 md:p-8 overflow-hidden transition-shadow duration-300 group-hover:shadow-[5px_7px_0_rgba(215,25,33,0.13)]"
+        style={{
+          background: "#ffffff",
+          border: "2px solid #2c2b27",
+          borderRadius: "255px 15px 225px 15px / 15px 225px 15px 255px",
+          boxShadow: "4px 5px 0 rgba(44,43,39,0.10), -1px -1px 0 rgba(44,43,39,0.04)",
+        }}
+      >
         {children}
       </div>
     </motion.div>
   );
 }
 
-// Small red monospace label used at the top of most tiles
+// Handwritten section label at the top of each tile
 function Label({ children }: { children: ReactNode }) {
   return (
-    <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#D71921] mb-4">
+    <p
+      style={{ fontFamily: "Caveat, cursive", fontWeight: 600 }}
+      className="text-lg text-[#D71921] mb-3"
+    >
       {children}
     </p>
   );
 }
 
-// Small pill tag used for project tech labels
+// Marker-highlight tech tag
 function Tag({ children }: { children: ReactNode }) {
   return (
-    <span className="font-mono text-[10px] tracking-wider uppercase bg-black/[0.04] text-black/40 px-2.5 py-1 rounded-full">
+    <span
+      style={{
+        fontFamily: "Caveat, cursive",
+        fontSize: "15px",
+        background: "rgba(215,25,33,0.09)",
+        border: "1.5px solid rgba(215,25,33,0.25)",
+        borderRadius: "255px 15px 225px 15px / 15px 225px 15px 255px",
+        padding: "2px 12px",
+        color: "#2c2b27",
+      }}
+    >
       {children}
     </span>
   );
 }
 
-// BentoGrid
-// - Layouts all the content tiles in a responsive grid
-// - Includes dot-grid background + hover-glow tiles + the special VertiGrow preview tile
 export default function BentoGrid() {
   return (
-    <section className="relative py-24 md:py-32 px-4 md:px-6">
-      {/* Dot grid behind glass tiles */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-        }}
-      />
-
+    <section id="overview" className="relative py-24 md:py-32 px-4 md:px-6">
       <div className="relative max-w-6xl mx-auto">
-        <motion.p
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="font-mono text-[11px] tracking-[0.3em] uppercase text-[#D71921] mb-10"
+          className="mb-12"
         >
-          Overview
-        </motion.p>
+          <p style={{ fontFamily: "Caveat, cursive", fontWeight: 600 }} className="text-2xl text-[#D71921]">
+            — Overview
+          </p>
+          <svg viewBox="0 0 160 10" className="h-2 mt-0.5" style={{ width: "160px" }} fill="none" aria-hidden>
+            <path d="M3 5 C 18 1, 38 9, 58 5 S 98 1, 120 5 S 150 9, 157 5"
+              stroke="#D71921" strokeWidth="2" strokeLinecap="round" opacity="0.55" />
+          </svg>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-stretch">
           {/* ── About ── */}
-          <Tile className="md:col-span-2 lg:col-span-2" delay={0}>
+          <Tile className="md:col-span-2 lg:col-span-2" delay={0} tileIndex={0}>
             <Label>About</Label>
             <p className="text-lg md:text-xl leading-relaxed text-black/70 font-light">
              I do software development specializing in web applications as a full-stack developer. 
@@ -479,8 +470,7 @@ export default function BentoGrid() {
           </Tile>
 
           {/* ── Education ── */}
-          <Tile delay={0.05}>
-            <Label>Education</Label>
+          <Tile delay={0.05} tileIndex={1}><Label>Education</Label>
             <h3 className="text-lg font-semibold text-black">
               BS Information Technology
             </h3>
@@ -493,8 +483,7 @@ export default function BentoGrid() {
           </Tile>
 
           {/* ── Tech Stack ── */}
-          <Tile delay={0.1}>
-            <Label>Tech Stack</Label>
+          <Tile delay={0.1} tileIndex={2}><Label>Tech Stack</Label>
             <div className="space-y-5">
               {skillCategories.map((cat) => (
                 <div key={cat.title}>
@@ -671,8 +660,7 @@ export default function BentoGrid() {
           })}
 
           {/* ── Competitions ── */}
-          <Tile delay={0}>
-            <Label>Competitions</Label>
+          <Tile delay={0} tileIndex={9}><Label>Competitions</Label>
             <ul className="space-y-3">
               {competitions.map((c) => (
                 <li key={c} className="flex items-start gap-3">
@@ -686,8 +674,7 @@ export default function BentoGrid() {
           </Tile>
 
           {/* ── Certifications ── */}
-          <Tile className="md:col-span-2 lg:col-span-2" delay={0.05}>
-            <Label>Awards &amp; Certifications</Label>
+          <Tile className="md:col-span-2 lg:col-span-2" delay={0.05} tileIndex={10}><Label>Awards &amp; Certifications</Label>
             <div className="grid sm:grid-cols-2 gap-x-8 gap-y-3">
               {certifications.map((c) => (
                 <div key={c} className="flex items-start gap-3">

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 
 const roles = [
   {
@@ -9,6 +9,7 @@ const roles = [
       "Built websites for non-IT students who needed a frontend developer for their school projects — tourism sites, personal portfolios, and similar work. Focused on clean layouts and fast delivery.",
     tags: ["HTML", "CSS", "React"],
     kind: "freelance",
+    rotate: -1.1,
   },
   {
     period: "2026",
@@ -18,91 +19,143 @@ const roles = [
       "Working as a full-stack intern on a production-level web application. Handling both frontend and backend responsibilities — building UI components, writing API logic, and working with a relational database.",
     tags: ["Laravel", "React", "Tailwind CSS", "MUI", "MySQL"],
     kind: "internship",
+    rotate: 0.8,
   },
 ];
 
+// Hand-drawn sketchy border style for paper cards
+const sketchyCard: React.CSSProperties = {
+  background: "#ffffff",
+  border: "2px solid #2c2b27",
+  borderRadius: "255px 15px 225px 15px / 15px 225px 15px 255px",
+  boxShadow: "4px 5px 0 rgba(44,43,39,0.10), -1px -1px 0 rgba(44,43,39,0.04)",
+};
+
 export default function WorkHistory() {
   return (
-    <section className="relative py-16 md:py-32 px-4 md:px-6">
-      {/* Dot grid */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-        }}
-      />
+    <section id="work" className="relative py-16 md:py-32 px-4 md:px-6">
+      <div className="relative max-w-5xl mx-auto">
 
-      <div className="relative max-w-6xl mx-auto">
-        <motion.p
+        {/* Section label */}
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: false }}
           transition={{ duration: 0.6 }}
-          className="font-mono text-[11px] tracking-[0.3em] uppercase text-[#D71921] mb-10"
+          className="mb-12"
         >
-          Work History
-        </motion.p>
+          <p
+            style={{ fontFamily: "Caveat, cursive", fontWeight: 600 }}
+            className="text-2xl text-[#D71921]"
+          >
+            — Work History
+          </p>
+          {/* Hand-drawn underline */}
+          <svg viewBox="0 0 180 10" className="h-2 mt-0.5" style={{ width: "180px" }} fill="none" aria-hidden>
+            <path d="M3 5 C 20 1, 40 9, 65 5 S 110 1, 135 5 S 165 9, 177 5"
+              stroke="#D71921" strokeWidth="2" strokeLinecap="round" opacity="0.55" />
+          </svg>
+        </motion.div>
 
         {/* Timeline */}
-        <div className="relative md:pl-24 space-y-10">
-          {/* Vertical rail */}
-          <div className="hidden md:block absolute left-0 top-0 bottom-0 w-px bg-black/10" />
+        <div className="relative md:pl-28 space-y-10">
+          {/* Vertical ruled line */}
+          <div
+            className="hidden md:block absolute left-10 top-0 bottom-0"
+            style={{ width: "1.5px", background: "rgba(100,155,215,0.35)" }}
+          />
 
           {roles.map((role, i) => (
             <motion.div
               key={role.period}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, margin: "-80px" }}
-              transition={{ duration: 0.55, delay: i * 0.08, ease: "easeOut" }}
+              transition={{ duration: 0.55, delay: i * 0.1, ease: "easeOut" }}
               className="relative"
+              style={{ transform: `rotate(${role.rotate}deg)` }}
             >
-              {/* Timeline date + centered dot (same pattern as Albums) */}
-              <span className="hidden md:block absolute left-[-6rem] top-[0.45rem] -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#D71921] shadow-[0_0_0_4px_rgba(215,25,33,0.12)]" />
-              <div className="hidden md:block absolute -left-[18rem] top-[6px] w-[11rem]">
-                <span className="block w-full text-right font-mono text-[10px] tracking-[0.2em] uppercase text-black/50 whitespace-nowrap">
-                  {role.period}
-                </span>
+              {/* Circled date — sits on the ruled line */}
+              <div
+                className="hidden md:flex absolute items-center justify-center"
+                style={{
+                  left: "-68px",
+                  top: "16px",
+                  width: "52px",
+                  height: "32px",
+                  fontFamily: "Caveat, cursive",
+                  fontSize: "13px",
+                  fontWeight: 600,
+                  color: "#D71921",
+                  border: "1.8px solid #D71921",
+                  borderRadius: "50% 45% 55% 50% / 50% 55% 45% 50%",
+                  background: "#F7F3EA",
+                  textAlign: "center",
+                  lineHeight: 1.1,
+                }}
+              >
+                {role.period}
               </div>
 
               {/* Card */}
-              <div className="rounded-2xl border border-black/[0.10] bg-white/70 backdrop-blur-xl p-5 md:p-6 group hover:border-[#D71921]/20 hover:shadow-[0_8px_32px_rgba(215,25,33,0.07)] transition-all duration-300">
-                {/* Mobile period label */}
-                <p className="md:hidden font-mono text-[10px] tracking-[0.2em] uppercase text-black/40 mb-2">
+              <div className="p-5 md:p-7 group hover:shadow-[6px_8px_0_rgba(215,25,33,0.12)] transition-shadow duration-300" style={sketchyCard}>
+
+                {/* Mobile period */}
+                <p
+                  style={{ fontFamily: "Caveat, cursive" }}
+                  className="md:hidden text-lg text-[#D71921] mb-2"
+                >
                   {role.period}
                 </p>
 
                 <div className="flex items-start justify-between gap-4 flex-wrap mb-3">
                   <div>
-                    <h3 className="text-base font-semibold text-black group-hover:text-[#D71921] transition-colors duration-300">
+                    <h3
+                      style={{ fontFamily: "Caveat, cursive", fontWeight: 700 }}
+                      className="text-2xl md:text-3xl text-[#2c2b27] group-hover:text-[#D71921] transition-colors duration-300"
+                    >
                       {role.title}
                     </h3>
-                    <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/40 mt-0.5">
+                    <p style={{ fontFamily: "Caveat, cursive" }} className="text-lg text-[#2c2b27]/50 mt-0.5">
                       {role.subtitle}
                     </p>
                   </div>
+
+                  {/* Kind badge — marker highlight */}
                   <span
-                    className={`shrink-0 rounded-full px-3 py-1 font-mono text-[10px] tracking-[0.15em] uppercase ${
-                      role.kind === "internship"
-                        ? "bg-[#D71921]/[0.07] text-[#D71921] border border-[#D71921]/20"
-                        : "bg-black/[0.04] text-black/45 border border-black/[0.08]"
-                    }`}
+                    style={{
+                      fontFamily: "Caveat, cursive",
+                      fontSize: "16px",
+                      background: role.kind === "internship" ? "rgba(215,25,33,0.14)" : "rgba(44,43,39,0.06)",
+                      border: role.kind === "internship" ? "1.5px solid rgba(215,25,33,0.35)" : "1.5px solid rgba(44,43,39,0.18)",
+                      borderRadius: "255px 15px 225px 15px / 15px 225px 15px 255px",
+                      color: role.kind === "internship" ? "#D71921" : "#2c2b27",
+                      padding: "4px 16px",
+                    }}
+                    className="shrink-0"
                   >
                     {role.kind}
                   </span>
                 </div>
 
-                <p className="text-sm leading-relaxed text-black/60 mb-4">
+                <p style={{ fontFamily: "Caveat, cursive" }} className="text-xl text-[#2c2b27]/65 mb-4 leading-snug">
                   {role.description}
                 </p>
 
-                <div className="flex flex-wrap gap-1.5">
+                {/* Tags — marker chips */}
+                <div className="flex flex-wrap gap-2">
                   {role.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="font-mono text-[10px] tracking-wider uppercase bg-black/[0.04] text-black/40 px-2.5 py-1 rounded-full"
+                      style={{
+                        fontFamily: "Caveat, cursive",
+                        fontSize: "16px",
+                        background: "rgba(215,25,33,0.08)",
+                        border: "1.5px solid rgba(215,25,33,0.22)",
+                        borderRadius: "255px 15px 225px 15px / 15px 225px 15px 255px",
+                        color: "#2c2b27",
+                        padding: "2px 14px",
+                      }}
                     >
                       {tag}
                     </span>

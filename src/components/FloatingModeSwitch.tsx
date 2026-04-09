@@ -1,16 +1,11 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-/** True when URL is the personal area of the site (`/personal`, `/personal/...`). */
 function isPersonalPath(path: string) {
   const p = (path || "/").split("?")[0].replace(/\/+$/, "") || "/";
   return p === "/personal" || p.startsWith("/personal/");
 }
 
-/**
- * Sticky floating pill: switch between the professional portfolio and the personal page.
- * Syncs with `window.location` on Astro view transitions.
- */
 export default function FloatingModeSwitch({ currentPath }: { currentPath: string }) {
   const [path, setPath] = useState(currentPath);
 
@@ -30,46 +25,61 @@ export default function FloatingModeSwitch({ currentPath }: { currentPath: strin
   return (
     <nav
       aria-label="Portfolio mode"
-      className="fixed bottom-6 left-1/2 z-[100] -translate-x-1/2 pointer-events-auto"
+      className="fixed bottom-0 left-1/2 z-[100] -translate-x-1/2 pointer-events-auto flex items-end gap-1"
     >
-      <div
-        className="relative grid w-[min(92vw,320px)] grid-cols-2 rounded-full border border-white/12 bg-[#141518]/92 p-1 shadow-[0_12px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+      {/* Work tab */}
+      <motion.div
+        animate={{ y: personal ? 4 : 0 }}
+        transition={{ type: "spring", stiffness: 320, damping: 28 }}
       >
-        {/* Active sliding pill — glass effect */}
-        <motion.div
-          aria-hidden
-          className="pointer-events-none absolute top-1 bottom-1 rounded-full"
-          initial={false}
-          animate={{ left: personal ? "calc(50% + 2px)" : "4px" }}
-          style={{
-            width: "calc(50% - 6px)",
-            // Layered glass: a translucent white base + subtle inner highlight + red-tinted glow
-            background:
-              "linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.07) 100%)",
-            backdropFilter: "blur(12px) saturate(1.6)",
-            WebkitBackdropFilter: "blur(12px) saturate(1.6)",
-            boxShadow:
-              "0 0 0 1px rgba(255,255,255,0.14), inset 0 1px 0 rgba(255,255,255,0.22), 0 4px 20px rgba(215,25,33,0.12)",
-          }}
-          transition={{ type: "spring", stiffness: 340, damping: 32 }}
-        />
         <a
           href="/"
-          className={`relative z-10 flex items-center justify-center rounded-full py-2.5 text-center text-[11px] font-mono uppercase tracking-[0.18em] no-underline transition-colors duration-200 ${
-            !personal ? "text-[#D71921]" : "text-white/45 hover:text-white/80"
-          }`}
+          className="flex items-center gap-1.5 no-underline transition-colors duration-200"
+          style={{
+            fontFamily: "Caveat, cursive",
+            fontSize: "20px",
+            padding: "10px 24px 12px",
+            background: personal ? "rgba(247,243,234,0.85)" : "#F7F3EA",
+            border: "2px solid #2c2b27",
+            borderBottom: "none",
+            borderRadius: "12px 12px 0 0",
+            color: personal ? "rgba(44,43,39,0.45)" : "#D71921",
+            boxShadow: personal
+              ? "1px -2px 0 rgba(44,43,39,0.06)"
+              : "3px -4px 0 rgba(44,43,39,0.12), inset 0 -2px 0 rgba(247,243,234,1)",
+            fontWeight: personal ? 400 : 600,
+          }}
         >
-          Professional
+          ✦ Work
         </a>
+      </motion.div>
+
+      {/* Personal tab */}
+      <motion.div
+        animate={{ y: personal ? 0 : 4 }}
+        transition={{ type: "spring", stiffness: 320, damping: 28 }}
+      >
         <a
           href="/personal/"
-          className={`relative z-10 flex items-center justify-center rounded-full py-2.5 text-center text-[11px] font-mono uppercase tracking-[0.18em] no-underline transition-colors duration-200 ${
-            personal ? "text-[#D71921]" : "text-white/45 hover:text-white/80"
-          }`}
+          className="flex items-center gap-1.5 no-underline transition-colors duration-200"
+          style={{
+            fontFamily: "Caveat, cursive",
+            fontSize: "20px",
+            padding: "10px 24px 12px",
+            background: personal ? "#F7F3EA" : "rgba(247,243,234,0.85)",
+            border: "2px solid #2c2b27",
+            borderBottom: "none",
+            borderRadius: "12px 12px 0 0",
+            color: personal ? "#D71921" : "rgba(44,43,39,0.45)",
+            boxShadow: personal
+              ? "3px -4px 0 rgba(44,43,39,0.12), inset 0 -2px 0 rgba(247,243,234,1)"
+              : "1px -2px 0 rgba(44,43,39,0.06)",
+            fontWeight: personal ? 600 : 400,
+          }}
         >
-          Personal
+          ♡ Personal
         </a>
-      </div>
+      </motion.div>
     </nav>
   );
 }

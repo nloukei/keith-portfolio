@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 
 import nasa1 from "../assets/nasaphoto1.jpg";
 import nasa2 from "../assets/nasaphoto2.jpg";
@@ -37,23 +37,24 @@ const otherAlbums = [
 export default function Albums() {
   return (
     <section className="relative py-16 md:py-32 px-4 md:px-6">
-      <div className="absolute inset-0 pointer-events-none">
-        <div
-          className="w-full h-full"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px)",
-            backgroundSize: "32px 32px",
-          }}
-        />
-      </div>
 
       <div className="relative max-w-6xl mx-auto space-y-16">
-        <section className="relative space-y-6 md:pl-24">
-          <div className="hidden md:block absolute left-0 top-0 bottom-0 w-px bg-black/10" />
+        {/* Section heading */}
+        <div className="mb-4">
+          <p style={{ fontFamily: "Caveat, cursive", fontWeight: 600 }} className="text-2xl text-[#D71921]">
+            — Albums
+          </p>
+          <svg viewBox="0 0 140 10" className="h-2 mt-0.5" style={{ width: "140px" }} fill="none" aria-hidden>
+            <path d="M3 5 C 15 1, 32 9, 52 5 S 88 1, 108 5 S 132 9, 137 5"
+              stroke="#D71921" strokeWidth="2" strokeLinecap="round" opacity="0.55" />
+          </svg>
+        </div>
+
+        <section id="albums" className="relative space-y-6 md:pl-24">
+          <div className="hidden md:block absolute left-0 top-0 bottom-0" style={{ width: "1.5px", background: "rgba(100,155,215,0.35)" }} />
           <span className="hidden md:block absolute left-0 top-[0.45rem] -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#D71921] shadow-[0_0_0_4px_rgba(215,25,33,0.12)]" />
           <div className="hidden md:block absolute -left-[7.5rem] top-[-2px]">
-            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/50 whitespace-nowrap">
+            <span className="text-lg text-[#2c2b27]/50 whitespace-nowrap" style={{ fontFamily: "Caveat, cursive" }}>
               October 2024
             </span>
           </div>
@@ -61,23 +62,23 @@ export default function Albums() {
           {/* Mobile date pill */}
           <div className="flex md:hidden items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#D71921]" />
-            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/45">October 2024</span>
+            <span className="text-lg text-[#2c2b27]/50" style={{ fontFamily: "Caveat, cursive" }}>October 2024</span>
           </div>
 
           <header>
           <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-[#D71921]">
             Albums
           </p>
-          <h2 className="mt-3 text-2xl md:text-3xl font-semibold tracking-tight text-black">
+          <h2 className="mt-2 text-3xl md:text-4xl text-[#2c2b27]" style={{ fontFamily: "Caveat, cursive", fontWeight: 700 }}>
             NASA Space Apps Challenge
           </h2>
-          <p className="mt-2 text-sm text-black/60 max-w-xl">
+          <p className="mt-2 text-xl text-[#2c2b27]/60 max-w-xl" style={{ fontFamily: "Caveat, cursive" }}>
             Moments from NASA International Space Apps Challenge in Valencia
             City – team photos, stage snapshots, and the community that shaped
             your hackathon journey.
           </p>
 
-          <p className="mt-3 font-mono text-[10px] tracking-[0.22em] uppercase text-black/40">
+          <p className="mt-2 text-lg text-[#2c2b27]/45" style={{ fontFamily: "Caveat, cursive" }}>
             Credits: DevCon Bukidnon
           </p>
           </header>
@@ -87,12 +88,12 @@ export default function Albums() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-80px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="rounded-2xl border border-white/60 bg-white/70 backdrop-blur-xl p-5 md:p-6"
+            className="p-5 md:p-6" style={{ background: "#FFF9A0", border: "1.5px solid #e6d200", borderRadius: "4px 14px 14px 4px", boxShadow: "3px 4px 0 rgba(44,43,39,0.10)", transform: "rotate(-0.5deg)" }}
           >
             <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#D71921] mb-3">
               What I Learned
             </p>
-            <p className="text-sm md:text-base leading-relaxed text-black/65">
+            <p className="text-xl leading-snug text-[#2c2b27]/65" style={{ fontFamily: "Caveat, cursive" }}>
               My first college hackathon. Learned to adapt and cooperate with a new
               team I did not know before. This experience was a big step in improving
               my communication and how I handle group projects. We only placed in the
@@ -124,7 +125,7 @@ export default function Albums() {
                   translateY: -4,
                   boxShadow: "0 24px 60px rgba(0,0,0,0.24)",
                 }}
-                className="relative overflow-hidden rounded-2xl border border-white/60 bg-white/60 backdrop-blur-xl"
+                className="relative overflow-hidden" style={{ background: "#fff", border: "2px solid #2c2b27", padding: "8px 8px 48px 8px", boxShadow: "3px 5px 0 rgba(44,43,39,0.12), -1px -1px 0 rgba(44,43,39,0.05)" }}
               >
                 <img
                   src={src.src}
@@ -139,10 +140,10 @@ export default function Albums() {
 
         {/* ── Scholar's Leadership Camp ── */}
         <section className="relative space-y-6 md:pl-24">
-          <div className="hidden md:block absolute left-0 top-0 bottom-0 w-px bg-black/10" />
+          <div className="hidden md:block absolute left-0 top-0 bottom-0" style={{ width: "1.5px", background: "rgba(100,155,215,0.35)" }} />
           <span className="hidden md:block absolute left-0 top-[0.45rem] -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#D71921] shadow-[0_0_0_4px_rgba(215,25,33,0.12)]" />
           <div className="hidden md:block absolute -left-[7.5rem] top-[-2px]">
-            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/50 whitespace-nowrap">
+            <span className="text-lg text-[#2c2b27]/50 whitespace-nowrap" style={{ fontFamily: "Caveat, cursive" }}>
               November 2024
             </span>
           </div>
@@ -150,7 +151,7 @@ export default function Albums() {
           {/* Mobile date pill */}
           <div className="flex md:hidden items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#D71921]" />
-            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/45">November 2024</span>
+            <span className="text-lg text-[#2c2b27]/50" style={{ fontFamily: "Caveat, cursive" }}>November 2024</span>
           </div>
 
           <div className="flex items-end justify-between gap-4 flex-wrap">
@@ -158,15 +159,15 @@ export default function Albums() {
               <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-[#D71921]">
                 Album
               </p>
-              <h2 className="mt-3 text-2xl md:text-3xl font-semibold tracking-tight text-black">
+              <h2 className="mt-2 text-3xl md:text-4xl text-[#2c2b27]" style={{ fontFamily: "Caveat, cursive", fontWeight: 700 }}>
                 Scholar&apos;s Leadership Camp
               </h2>
-              <p className="mt-2 text-sm text-black/60 max-w-xl">
+              <p className="mt-2 text-xl text-[#2c2b27]/60 max-w-xl" style={{ fontFamily: "Caveat, cursive" }}>
                 Moments from leadership training, workshops, and the friendships that
                 turned into long-lasting teams.
               </p>
 
-              <p className="mt-3 font-mono text-[10px] tracking-[0.22em] uppercase text-black/40">
+              <p className="mt-2 text-lg text-[#2c2b27]/45" style={{ fontFamily: "Caveat, cursive" }}>
                 Credits: Northern Mindanao Association of DOST-SEI Scholars (NMADS)
               </p>
             </div>
@@ -177,12 +178,12 @@ export default function Albums() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-80px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="rounded-2xl border border-white/60 bg-white/70 backdrop-blur-xl p-5 md:p-6"
+            className="p-5 md:p-6" style={{ background: "#FFF9A0", border: "1.5px solid #e6d200", borderRadius: "4px 14px 14px 4px", boxShadow: "3px 4px 0 rgba(44,43,39,0.10)", transform: "rotate(-0.5deg)" }}
           >
             <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#D71921] mb-3">
               What I Learned
             </p>
-            <p className="text-sm md:text-base leading-relaxed text-black/65">
+            <p className="text-xl leading-snug text-[#2c2b27]/65" style={{ fontFamily: "Caveat, cursive" }}>
               Through the DOST-SEI Scholar's Leadership Camp, I discovered that leadership is not about
               individual perfection, but about the courage to step forward. I learned that an
               effective leader doesn&apos;t need to master every skill, but must excel in fostering
@@ -254,10 +255,10 @@ export default function Albums() {
 
         {/* ── ASEAN Green Entrepreneurship Hackathon ── */}
         <section className="relative space-y-6 md:pl-24">
-          <div className="hidden md:block absolute left-0 top-0 bottom-0 w-px bg-black/10" />
+          <div className="hidden md:block absolute left-0 top-0 bottom-0" style={{ width: "1.5px", background: "rgba(100,155,215,0.35)" }} />
           <span className="hidden md:block absolute left-0 top-[0.45rem] -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#D71921] shadow-[0_0_0_4px_rgba(215,25,33,0.12)]" />
           <div className="hidden md:block absolute -left-[7.5rem] top-[-2px]">
-            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/50 whitespace-nowrap">
+            <span className="text-lg text-[#2c2b27]/50 whitespace-nowrap" style={{ fontFamily: "Caveat, cursive" }}>
               July 2025
             </span>
           </div>
@@ -265,23 +266,23 @@ export default function Albums() {
           {/* Mobile date pill */}
           <div className="flex md:hidden items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#D71921]" />
-            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/45">July 2025</span>
+            <span className="text-lg text-[#2c2b27]/50" style={{ fontFamily: "Caveat, cursive" }}>July 2025</span>
           </div>
 
           <div>
             <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-[#D71921]">
               Album
             </p>
-            <h2 className="mt-3 text-2xl md:text-3xl font-semibold tracking-tight text-black">
+            <h2 className="mt-2 text-3xl md:text-4xl text-[#2c2b27]" style={{ fontFamily: "Caveat, cursive", fontWeight: 700 }}>
               ASEAN Green Entrepreneurship Hackathon
             </h2>
-            <p className="mt-2 text-sm text-black/60 max-w-xl">
+            <p className="mt-2 text-xl text-[#2c2b27]/60 max-w-xl" style={{ fontFamily: "Caveat, cursive" }}>
               Regional Finalist representing BukSU Team 3. We pitched EcoQuest,
               a mobile app combining gamification, AR tree identification, and
               GPS-enabled recycling tracking to engage Filipino youth in
               environmental action.
             </p>
-            <p className="mt-3 font-mono text-[10px] tracking-[0.22em] uppercase text-black/40">
+            <p className="mt-2 text-lg text-[#2c2b27]/45" style={{ fontFamily: "Caveat, cursive" }}>
               Passage to ASEAN (P2A) · BukSU Team 3
             </p>
           </div>
@@ -292,7 +293,7 @@ export default function Albums() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-80px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="rounded-2xl border border-white/60 bg-white/70 backdrop-blur-xl p-5 md:p-6"
+            className="p-5 md:p-6" style={{ background: "#FFF9A0", border: "1.5px solid #e6d200", borderRadius: "4px 14px 14px 4px", boxShadow: "3px 4px 0 rgba(44,43,39,0.10)", transform: "rotate(-0.5deg)" }}
           >
             <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#D71921] mb-3">
               The Project — EcoQuest
@@ -323,7 +324,7 @@ export default function Albums() {
                 viewport={{ once: false }}
                 transition={{ duration: 0.55, delay: i * 0.07, ease: "easeOut" }}
                 whileHover={{ scale: 1.02, translateY: -4, boxShadow: "0 24px 60px rgba(0,0,0,0.24)" }}
-                className="relative overflow-hidden rounded-2xl border border-white/60 bg-white/60 backdrop-blur-xl"
+                className="relative overflow-hidden" style={{ background: "#fff", border: "2px solid #2c2b27", padding: "8px 8px 48px 8px", boxShadow: "3px 5px 0 rgba(44,43,39,0.12), -1px -1px 0 rgba(44,43,39,0.05)" }}
               >
                 <img
                   src={src.src}
@@ -344,10 +345,10 @@ export default function Albums() {
 
         {/* ── Hack4Gov ── */}
         <section className="relative space-y-6 md:pl-24">
-          <div className="hidden md:block absolute left-0 top-0 bottom-0 w-px bg-black/10" />
+          <div className="hidden md:block absolute left-0 top-0 bottom-0" style={{ width: "1.5px", background: "rgba(100,155,215,0.35)" }} />
           <span className="hidden md:block absolute left-0 top-[0.45rem] -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#D71921] shadow-[0_0_0_4px_rgba(215,25,33,0.12)]" />
           <div className="hidden md:block absolute -left-[7.5rem] top-[-2px]">
-            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/50 whitespace-nowrap">
+            <span className="text-lg text-[#2c2b27]/50 whitespace-nowrap" style={{ fontFamily: "Caveat, cursive" }}>
               November 2025
             </span>
           </div>
@@ -355,22 +356,22 @@ export default function Albums() {
           {/* Mobile date pill */}
           <div className="flex md:hidden items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#D71921]" />
-            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/45">November 2025</span>
+            <span className="text-lg text-[#2c2b27]/50" style={{ fontFamily: "Caveat, cursive" }}>November 2025</span>
           </div>
 
           <div>
             <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-[#D71921]">
               Album
             </p>
-            <h2 className="mt-3 text-2xl md:text-3xl font-semibold tracking-tight text-black">
+            <h2 className="mt-2 text-3xl md:text-4xl text-[#2c2b27]" style={{ fontFamily: "Caveat, cursive", fontWeight: 700 }}>
               Regional Hack4Gov
             </h2>
-            <p className="mt-2 text-sm text-black/60 max-w-xl">
+            <p className="mt-2 text-xl text-[#2c2b27]/60 max-w-xl" style={{ fontFamily: "Caveat, cursive" }}>
             Joined the Hack4Gov hackathon in Region X. 
             We competed in a PicoCTF-style format, racing to earn the highest points by solving technical challenges. 
             It was a great way to test our skills while focusing on how tech can better serve the public.
             </p>
-            <p className="mt-3 font-mono text-[10px] tracking-[0.22em] uppercase text-black/40">
+            <p className="mt-2 text-lg text-[#2c2b27]/45" style={{ fontFamily: "Caveat, cursive" }}>
               DICT Region X · 2025
             </p>
           </div>
@@ -390,7 +391,7 @@ export default function Albums() {
                 viewport={{ once: false }}
                 transition={{ duration: 0.55, delay: i * 0.07, ease: "easeOut" }}
                 whileHover={{ scale: 1.02, translateY: -4, boxShadow: "0 24px 60px rgba(0,0,0,0.24)" }}
-                className="relative overflow-hidden rounded-2xl border border-white/60 bg-white/60 backdrop-blur-xl"
+                className="relative overflow-hidden" style={{ background: "#fff", border: "2px solid #2c2b27", padding: "8px 8px 48px 8px", boxShadow: "3px 5px 0 rgba(44,43,39,0.12), -1px -1px 0 rgba(44,43,39,0.05)" }}
               >
                 <img
                   src={src.src}
